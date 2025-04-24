@@ -94,4 +94,18 @@ document.addEventListener("DOMContentLoaded", () => {
         userAmount.value = "";
         errorMessage.classList.add("hide-error");
     });
+
+    const resetButton = document.getElementById("reset-button");
+
+    // Reset functionality
+    resetButton.addEventListener("click", () => {
+        localStorage.clear(); // Clear local storage
+        amount.innerText = 0;
+        expenditureValue.innerText = 0;
+        balanceValue.innerText = 0;
+        list.innerHTML = "";
+        productTittle.value = "";
+        userAmount.value = "";
+        totalAmount.value = "";
+    });
 });
