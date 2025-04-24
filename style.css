@@ -103,7 +103,7 @@ body{
 
 }
 
-#list{
+.list{
     background-color: #fff;
     padding: 1.8em 1.2em;
     border-radius: 0.6em;
