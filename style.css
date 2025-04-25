@@ -27,7 +27,7 @@ body{
     bottom: 0;
     width: 100%;
     height: auto;
-    transform: scaleY(1.4) translateY(20px); /* this makes it curvier AND shifts it upward */
+    transform: scaleY(2.5) translateY(20px); /* this makes it curvier AND shifts it upward */
     transform-origin: bottom;
 }
   
