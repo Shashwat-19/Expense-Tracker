@@ -1,3 +1,15 @@
+window.addEventListener("load", () => {
+    const loader = document.getElementById("loading-screen");
+
+    setTimeout(() => {
+      loader.style.opacity = "0";
+
+      setTimeout(() => {
+        loader.style.display = "none";
+      }, 800); // match transition duration
+    }, 1500); 
+});
+ 
 document.addEventListener("DOMContentLoaded", () => {
     let totalAmount = document.getElementById("total-amount");
     let userAmount = document.getElementById("user-amount");
