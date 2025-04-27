@@ -1,94 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budget App</title>
-    <link rel="shortcut icon" href="Assets/icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM8d7x1z5l5e5c5e5e5e5e5e5e5e5e5e5e5e5" crossorigin="anonymous">
-</head>
-<body>
-    <div id="loading-screen">
-        <!-- From Uiverse.io by Nawsome --> 
-        <div class="loader">
-            <div class="loader__bar"></div>
-            <div class="loader__bar"></div>
-            <div class="loader__bar"></div>
-            <div class="loader__bar"></div>
-            <div class="loader__bar"></div>
-            <div class="loader__ball"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="auth.js"></script>
+    <!-- FIXED -->
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-container">
+        <div class="tabs">
+          <button class="tab-btn active" onclick="openTab('login')">
+            Login
+          </button>
+          <button class="tab-btn" onclick="openTab('register')">
+            Register
+          </button>
         </div>
-    </div>
 
-    <div class="s-wave-bg">
-        <svg viewBox="0 0 1440 320">
-          <path fill="#2196f3" fill-opacity="1"
-            d="M0,160 C360,240 1080,80 1440,160 L1440,320 L0,320 Z"></path>
-        </svg>
-    </div>
-      
-
-    <h1 class="main-heading">Expense Tracker</h1>
-    <div class="wrapper">
-        <div class="container">
-            <div class="sub-container">
-                <!-- Budget box -->
-                 <div class="total-amount-container">
-                    <h3>Budget</h3>
-                     <p class="hide-error" id="budget-error"></p>
-                    <input type="number" id="total-amount" placeholder="Enter total amount" />
-                    <button class="submit" id="total-amount-button">Set Budget</button>
-                    <button class="reset-button" id="reset-button">Reset</button>
-                 </div>
-                <!-- Expense box -->
-                 <div class="user-amount-container">
-                    <h3>Expenses</h3>
-                    <p class="hide-error" id="budget-error"></p>
-                    <input type="text" class="product-tittle" id="product-tittle" placeholder="Enter tittle of the product" />
-                    <!--
-                    <p class="hide-error" id="product-cost-error">Values can't be Empty or Negative.</p>
-                    -->
-                    <input type="number" id="user-amount" placeholder="Enter cost of the product" />
-
-                    <button class="submit" id="check-amount">Check Amount</button>
-                 </div>
+        <div id="login" class="tab-content active">
+          <form id="login-form">
+            <div
+              id="signInMessage"
+              class="messageDiv"
+              style="display: none"
+            ></div>
+            <div class="form-group">
+              <label for="login-email">Email</label>
+              <input
+                type="email"
+                id="login-email"
+                class="form-control"
+                placeholder="Enter your email"
+                required
+              />
             </div>
-            <!-- Output-->
-
-            <div class="output-container flex-space">
-                <div>
-                    <p>Total Budget</p>
-                    <span id="amount">0</span>
-                </div>
-                <div>
-                    <p>Expenses</p>
-                    <span id="expenditure-value">0</span>
-                </div>
-                <div>
-                    <p>Balance</p>
-                    <span id="balance-amount">0</span>
-                </div>
+            <div class="form-group">
+              <label for="login-password">Password</label>
+              <input
+                type="password"
+                id="login-password"
+                class="form-control"
+                placeholder="Enter your password"
+                required
+              />
             </div>
+            <div class="remember-forgot">
+              <div class="checkbox-container">
+                <input type="checkbox" id="remember" />
+                <label for="remember">Remember me</label>
+              </div>
+              <a href="#" class="forgot-password">Forgot Password?</a>
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+          </form>
+          <div class="form-footer">
+            <p>
+              Don't have an account?
+              <a href="#" onclick="openTab('register')">Register here</a>
+            </p>
+          </div>
         </div>
-        <!-- List -->
 
-        <div class="list">
-            <h3>Expense List</h3>
-            <div class="list-container" id="list">
-
+        <div id="register" class="tab-content">
+          <form id="register-form">
+            <div
+              id="signUpMessage"
+              class="messageDiv"
+              style="display: none"
+            ></div>
+            <div class="form-group">
+              <label for="register-name">Full Name</label>
+              <!-- FIXED ID -->
+              <input
+                type="text"
+                id="register-name"
+                class="form-control"
+                placeholder="Enter your full name"
+                required
+              />
             </div>
+            <div class="form-group">
+              <label for="register-email">Email</label>
+              <!-- FIXED ID -->
+              <input
+                type="email"
+                id="register-email"
+                class="form-control"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="register-password">Password</label>
+              <!-- FIXED ID -->
+              <input
+                type="password"
+                id="register-password"
+                class="form-control"
+                placeholder="Create a password"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="register-confirm-password">Confirm Password</label>
+              <!-- FIXED ID -->
+              <input
+                type="password"
+                id="register-confirm-password"
+                class="form-control"
+                placeholder="Confirm your password"
+                required
+              />
+            </div>
+            <div class="checkbox-container" style="margin-bottom: 20px">
+              <input type="checkbox" id="terms" required />
+              <label for="terms">I agree to the Terms & Conditions</label>
+            </div>
+            <button type="submit" class="reg-btn">Register</button>
+          </form>
+          <div class="form-footer">
+            <p>
+              Already have an account?
+              <a href="#" onclick="openTab('login')">Login here</a>
+            </p>
+          </div>
         </div>
+      </div>
     </div>
     <script src="script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM8d7x1z5l5e5c5e5e5e5e5e5e5e5e5e5e5e5" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM8d7x1z5l5e5c5e5e5e5e5e5e5e5e5e5e5e5" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+  </body>
 </html>
