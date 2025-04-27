@@ -77,7 +77,7 @@ if (registerForm) {
             console.log("Document successfully written!");
             showMessage("User created successfully! Redirecting...");
             setTimeout(() => {
-                window.location.href = 'exptr.html';
+                window.location.href = "tracker/index.html";
             }, 1500);
           })
           .catch((error) => {
@@ -114,7 +114,7 @@ loginForm.addEventListener("submit", (e) => {
       const user = userCredential.user;
       showMessage("Login successful! Redirecting...");
       setTimeout(() => {
-        window.location.href = "dashboard.html"; // Adjust your post-login page
+        window.location.href = "tracker/index.html"; // Adjust your post-login page
       }, 1500);
     })
     .catch((error) => {
