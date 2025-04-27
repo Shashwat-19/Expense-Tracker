@@ -77,7 +77,7 @@ if (registerForm) {
             console.log("Document successfully written!");
             showMessage("User created successfully! Redirecting...");
             setTimeout(() => {
-                window.location.href = "./tracker/index.html";
+                window.location.href = "./tracker/exptr.html";
             }, 1500);
           })
           .catch((error) => {
