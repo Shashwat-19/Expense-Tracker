@@ -77,14 +77,14 @@ if (registerForm) {
             console.log("Document successfully written!");
             showMessage("User created successfully! Redirecting...");
             setTimeout(() => {
-              window.location.href = "tracker/index.html"; // Adjust redirect URL as needed
+              window.location.href = "./tracker/index.html"; // Adjust redirect URL as needed
             }, 1500);
           })
           .catch((error) => {
             console.error("Error writing document: ", error);
             showMessage("Error saving user data: " + error.message);
           });
-      })
+        })
       .catch((error) => {
         const errorCode = error.code;
         if (errorCode === "auth/email-already-in-use") {
