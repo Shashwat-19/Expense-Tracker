@@ -24,10 +24,22 @@ It helps users track income, expenses, and balance — promoting better financia
 
 ## 🛠️ Tech Stack & Tools
 - **Languages**: HTML, CSS, JavaScript
-- **Frameworks**: None (Vanilla JS)
 - **Database**: Firebase Firestore
 - **Cloud & DevOps**: Firebase Hosting, GitHub Actions (CI/CD)
 - **Other Tools**: Firebase CLI, Prettier for formatting
+
+---
+
+## 🚀 Live Demo
+
+Try out the To-Do List App directly by visiting:<br>
+👉 [Live Demo](https://shashwat-19.github.io/Expense-Tracker/)
+
+---
+## 📦 Latest Release: [v1.0.0](https://github.com/Shashwat-19/Expense-Tracker/releases/tag/v1.0.0)
+
+Expense-Tracker v1.0.0 is live! 🎉    
+
 
 ## 📦 Installation & Setup
 
