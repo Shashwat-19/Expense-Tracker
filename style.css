@@ -12,6 +12,26 @@
     align-items: center;
     min-height: 100vh;
   }
+
+.s-wave-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    background-color: #f8f8f8;
+    overflow: hidden;
+}
+  
+.s-wave-bg svg {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    transform: scaleY(2.5) translateY(20px); /* this makes it curvier AND shifts it upward */
+    transform-origin: bottom;
+}
   
   .container {
     background-color: #f8f8f8;
