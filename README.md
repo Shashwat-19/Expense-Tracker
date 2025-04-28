@@ -32,7 +32,7 @@ It helps users track income, expenses, and balance — promoting better financia
 
 ## 🚀 Live Demo
 
-Try out the To-Do List App directly by visiting:<br>
+Try out the Expense Tracker App directly by visiting:<br>
 👉 [Live Demo](https://shashwat-19.github.io/Expense-Tracker/)
 
 ---
