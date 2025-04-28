@@ -68,37 +68,46 @@ firebase deploy
 ```
 expense-tracker/
 ├── assets/
-│   ├── css/
-│   ├── js/
-│   └── images/
+│   ├── icon.png
+│   └── image.png
 ├── firebase/
-│   ├── firebase-config.js
+│   └── auth.js
+├── tracker/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
 ├── index.html
+├── style.css
+├── script.js
 ├── README.md
 ├── .gitignore
+├── Code of Conduct
+├── Security
 └── LICENSE
 ```
 
 ## 🧪 Testing
 **Manual Testing:**
 
-Add, edit, and delete transactions<br>
-Check UI responsiveness<br>
-Test Firebase integration<br>
-Confirm balance updates correctly
+- Add, edit, and delete transactions<br>
+- Check UI responsiveness<br>
+- Test Firebase integration<br>
+- Confirm balance updates correctly
 
 
 ---
 
 ## 📊 Performance Optimization
 
-Firebase Hosting CDN enabled for faster load times<br>
-Minified JavaScript and CSS<br>
-Optimized images for web<br>
-Indexed database reads (Firebase Firestore)
+-  Hosting CDN enabled for faster load times<br>
+- Minified JavaScript and CSS<br>
+- Optimized images for web<br>
+- Indexed database reads (Firebase Firestore)
 
 ## 📖 Documentation
+
 Detailed configuration and developer guidelines will be available inside the /docs folder (coming soon).
+
 ---
 
 ## 💡 Contribution Guidelines
@@ -113,10 +122,13 @@ Open a pull request
 
 ## 📱 Browser Support
 
-Chrome (last 2 versions)<br>
-Firefox (last 2 versions)<br>
-Safari (last 2 versions)<br>
-Edge (last 2 versions)
+- Chrome (last 2 versions)<br>
+- Firefox (last 2 versions)<br>
+- Safari (last 2 versions)<br>
+- Edge (last 2 versions)
+
 ---
 ## 📜 License
-Licensed under the MIT License.
+
+Copyright (C) 2023-2024 Shashwat<br><br>
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
