@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let userAmount = document.getElementById("user-amount");
     const checkAmountButton = document.getElementById("check-amount");
     const totalAmountButton = document.getElementById("total-amount-button");
+    const addBudgetButton = document.getElementById("add-budget-button");
 
     const productTittle = document.getElementById("product-tittle");
 
@@ -72,6 +73,22 @@ document.addEventListener("DOMContentLoaded", () => {
             saveToLocalStorage();
         }
     });
+
+    addBudgetButton.addEventListener("click", () => {
+        let additionalAmount = parseInt(totalAmount.value);
+        if (isNaN(additionalAmount) || additionalAmount <= 0) {
+            errorMessage.classList.remove("hide-error");
+            errorMessage.textContent = "Enter a valid amount to add.";
+        } else {
+            errorMessage.classList.add("hide-error");
+            tempAmount = parseInt(amount.innerText) + additionalAmount;
+            amount.innerText = tempAmount;
+            balanceValue.innerText = tempAmount - parseInt(expenditureValue.innerText);
+            totalAmount.value = "";
+            saveToLocalStorage();
+        }
+    });
+    
 
     const disableButtons = (bool) => {
         let editButtons = document.getElementsByClassName("edit");
