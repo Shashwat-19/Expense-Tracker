@@ -1,5 +1,13 @@
 # 📌 Expense Tracker
 
+![HTML](https://img.shields.io/badge/HTML-5-orange?logo=html5)
+![CSS](https://img.shields.io/badge/CSS-3-blue?logo=css3)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow?logo=javascript)
+![Firebase](https://img.shields.io/badge/Firebase-Auth-orange?logo=firebase)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Platform](https://img.shields.io/badge/Platform-Web-lightgrey)
+
 ![Project Banner](https://github.com/Shashwat-19/Expense-Tracker/raw/main/Assets/image.png)
 
 ## 🚀 Overview
