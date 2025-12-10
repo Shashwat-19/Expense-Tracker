@@ -27,6 +27,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let tempAmount = 0;
 
+    // Check login state
+    const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+    if (isLoggedIn) {
+        document.getElementById('logout-btn').style.display = 'inline-block';
+    } else {
+        document.getElementById('guest-login-btn').style.display = 'inline-block';
+    }
+
     // Load from localStorage on load
     const loadFromLocalStorage = () => {
         const savedBudget = localStorage.getItem("budget");
