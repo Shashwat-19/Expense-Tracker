@@ -1,15 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Expense Tracker</title>
-    <link rel="stylesheet" href="style.css" />
-    <script type="module" src="./Firebase/auth.js"></script>
-    <link rel="shortcut icon" href="./Assets/icon.png" type="image/x-icon">
-    <!-- FIXED -->
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            flex-direction: column;
+            text-align: center;
+            background: #f7f9fd;
+            padding: 20px;
+        }
+        .landing-container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #587ef4;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn-primary {
+            background: #587ef4;
+            color: white;
+            box-shadow: 0 5px 15px rgba(88, 126, 244, 0.4);
+        }
+        .btn-secondary {
+            background: white;
+            color: #587ef4;
+            border: 2px solid #587ef4;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+        .btn-primary:hover {
+            background: #4169e1;
+            box-shadow: 0 8px 20px rgba(88, 126, 244, 0.6);
+        }
+        .btn-secondary:hover {
+            background: #f0f4ff;
+        }
+        .info-box {
+            margin-top: 50px;
+            padding: 20px;
+            background: #eff6ff;
+            border-radius: 10px;
+            border-left: 5px solid #587ef4;
+            text-align: left;
+        }
+        .info-box h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .info-box p {
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
 
     <div class="s-wave-bg">
         <svg viewBox="0 0 1440 320">
@@ -18,127 +94,21 @@
         </svg>
     </div>
 
-    <div class="container">
-      <div class="form-container">
-        <div class="tabs">
-          <button class="tab-btn active" onclick="openTab('login')">
-            Login
-          </button>
-          <button class="tab-btn" onclick="openTab('register')">
-            Register
-          </button>
+    <div class="landing-container">
+        <h1>Expense Tracker</h1>
+        <p>Take control of your finances today. Track your income and expenses easily, visualize your spending, and stay on budget.</p>
+
+        <div class="btn-group">
+            <a href="tracker/index.html" class="btn btn-secondary">Use as Guest</a>
+            <a href="login.html" class="btn btn-primary">Login / Register</a>
         </div>
 
-        <div id="login" class="tab-content active">
-          <form id="login-form">
-            <div
-              id="signInMessage"
-              class="messageDiv"
-              style="display: none"
-            ></div>
-            <div class="form-group">
-              <label for="login-email">Email</label>
-              <input
-                type="email"
-                id="login-email"
-                class="form-control"
-                placeholder="Enter your email"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label for="login-password">Password</label>
-              <input
-                type="password"
-                id="login-password"
-                class="form-control"
-                placeholder="Enter your password"
-                required
-              />
-            </div>
-            <div class="remember-forgot">
-              <div class="checkbox-container">
-                <input type="checkbox" id="remember" />
-                <label for="remember">Remember me</label>
-              </div>
-              <a href="#" class="forgot-password">Forgot Password?</a>
-            </div>
-            <button type="submit" class="login-btn">Login</button>
-          </form>
-          <div class="form-footer">
-            <p>
-              Don't have an account?
-              <a href="#" onclick="openTab('register')">Register here</a>
-            </p>
-          </div>
+        <div class="info-box">
+            <h3>📢 Important Note</h3>
+            <p><strong>Guest Mode:</strong> Your data is stored locally on this device. If you clear your browser cache, you will lose your data.</p>
+            <p style="margin-top: 10px;"><strong>Login Mode:</strong> Create an account to securely store your data in the cloud and access it from any device.</p>
         </div>
-
-        <div id="register" class="tab-content">
-          <form id="register-form">
-            <div
-              id="signUpMessage"
-              class="messageDiv"
-              style="display: none"
-            ></div>
-            <div class="form-group">
-              <label for="register-name">Full Name</label>
-              <!-- FIXED ID -->
-              <input
-                type="text"
-                id="register-name"
-                class="form-control"
-                placeholder="Enter your full name"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label for="register-email">Email</label>
-              <!-- FIXED ID -->
-              <input
-                type="email"
-                id="register-email"
-                class="form-control"
-                placeholder="Enter your email"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label for="register-password">Password</label>
-              <!-- FIXED ID -->
-              <input
-                type="password"
-                id="register-password"
-                class="form-control"
-                placeholder="Create a password"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label for="register-confirm-password">Confirm Password</label>
-              <!-- FIXED ID -->
-              <input
-                type="password"
-                id="register-confirm-password"
-                class="form-control"
-                placeholder="Confirm your password"
-                required
-              />
-            </div>
-            <div class="checkbox-container" style="margin-bottom: 20px">
-              <input type="checkbox" id="terms" required />
-              <label for="terms">I agree to the Terms & Conditions</label>
-            </div>
-            <button type="submit" class="reg-btn">Register</button>
-          </form>
-          <div class="form-footer">
-            <p>
-              Already have an account?
-              <a href="#" onclick="openTab('login')">Login here</a>
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
-    <script src="script.js"></script>
-  </body>
+
+</body>
 </html>

@@ -35,24 +35,29 @@ function showMessage(message) {
 // SESSION Management
 function startSession() {
   const currentTime = new Date().getTime();
+  const sessionDuration = 32 * 60 * 60 * 1000; // 32 hours
+  const expiryTime = currentTime + sessionDuration;
+  
   localStorage.setItem('loggedIn', 'true');
-  localStorage.setItem('loginTime', currentTime);
+  localStorage.setItem('sessionExpiry', expiryTime);
 }
 
 function clearSession() {
   localStorage.removeItem('loggedIn');
-  localStorage.removeItem('loginTime');
+  localStorage.removeItem('sessionExpiry');
+  // Optional: Clear tracker data if logout implies clearing local state? 
+  // Probably not, if they were guests before. But "logout" implies they were logged in.
 }
 
 function checkSessionAndRedirect() {
   const isLoggedIn = localStorage.getItem('loggedIn');
-  const loginTime = localStorage.getItem('loginTime');
+  const sessionExpiry = localStorage.getItem('sessionExpiry');
 
-  if (isLoggedIn === 'true' && loginTime) {
+  if (isLoggedIn === 'true' && sessionExpiry) {
     const now = new Date().getTime();
-    const thirtyTwoHours = 32 * 60 * 60 * 1000; // 32 hours
 
-    if (now - loginTime < thirtyTwoHours) {
+    if (now < parseInt(sessionExpiry)) {
+      // User is logged in, redirect to tracker
       window.location.href = "tracker/index.html";
     } else {
       clearSession();
@@ -60,31 +65,14 @@ function checkSessionAndRedirect() {
   }
 }
 
-function protectTrackerPage() {
-  const isLoggedIn = localStorage.getItem('loggedIn');
-  const loginTime = localStorage.getItem('loginTime');
-
-  if (isLoggedIn !== 'true' || !loginTime) {
-    window.location.href = "../index.html";
-  } else {
-    const now = new Date().getTime();
-    const thirtyTwoHours = 32 * 60 * 60 * 1000;
-    if (now - loginTime >= thirtyTwoHours) {
-      clearSession();
-      window.location.href = "../index.html";
-    }
-  }
-}
-
 // Call session check on login page
-if (window.location.pathname.endsWith("/index.html") || window.location.pathname.endsWith("/")) {
+if (window.location.pathname.endsWith("/login.html")) {
   document.addEventListener("DOMContentLoaded", checkSessionAndRedirect);
 }
 
-// Call protection on tracker page
-if (window.location.pathname.includes("/tracker/")) {
-  document.addEventListener("DOMContentLoaded", protectTrackerPage);
-}
+// We REMOVED the strict protectTrackerPage to allow Guest Access.
+// The tracker script will handle "Authentication State" internally if we implement cloud sync later.
+// Currently, tracker is LocalStorage only, so it works for everyone.
 
 // Register form
 const registerForm = document.querySelector("#register-form");
@@ -186,7 +174,7 @@ if (loginForm) {
 // Logout function (for tracker page)
 window.logout = function() {
   clearSession();
-  window.location.href = "../index.html";
+  window.location.href = "../login.html";
 };
 
 // Tab switching function (for registration/login tabs)
