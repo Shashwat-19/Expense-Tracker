@@ -475,3 +475,20 @@ input:focus {
 
 /* Remove old loader styles */
 .loader, .loader__bar, .loader__ball { display: none; }
+
+/* Footer Badges */
+.social-links.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.social-links.badges a {
+    text-decoration: none;
+    transition: transform 0.3s;
+}
+
+.social-links.badges a:hover {
+    transform: translateY(-3px);
+}
