@@ -8,7 +8,7 @@
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![Platform](https://img.shields.io/badge/Platform-Web-lightgrey)
 
-![Project Banner](https://github.com/Shashwat-19/Expense-Tracker/raw/main/Assets/image.png)
+![Project Banner](https://github.com/Shashwat-19/Expense-Tracker/raw/main/Assets/Banner.png)
 
 ## 🚀 Overview
 
