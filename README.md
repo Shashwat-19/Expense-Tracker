@@ -105,7 +105,7 @@ expense-tracker/
 │   ├── index.html
 │   ├── style.css
 │   └── script.js
-├── index.html       (Landing Page)
+├── landing.html       (Landing Page)
 ├── login.html       (Login/Register Page)
 ├── style.css
 ├── script.js

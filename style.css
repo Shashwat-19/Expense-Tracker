@@ -4,6 +4,7 @@
 :root {
   --bg-color: #0f172a;
   --card-bg: rgba(30, 41, 59, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.08);
   --text-primary: #f1f5f9;
   --text-secondary: #94a3b8;
   --accent-color: #6366f1;
@@ -44,7 +45,6 @@ body {
 }
 
 .s-wave-bg svg {
-    /* Keeping the svg but making it subtle or hidden effectively */
     opacity: 0.1; 
     position: absolute;
     bottom: 0;
@@ -56,26 +56,120 @@ h1, h2, h3, h4, .tab-btn, .login-btn, .reg-btn {
   font-family: 'Outfit', sans-serif;
 }
 
-.container {
+/* Common Container Styles */
+.container, .landing-container {
   background: var(--card-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-color);
   border-radius: 20px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.container {
   width: 500px;
   max-width: 95%;
   display: flex;
   overflow: hidden;
-  transition: transform 0.3s ease;
   margin-top: 20px;
 }
 
-.container:hover {
+.landing-container {
+  max-width: 800px;
+  padding: 3rem;
+  text-align: center;
+  margin: 20px;
+}
+
+.landing-container h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.landing-container p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+}
+
+.container:hover, .landing-container:hover {
   transform: translateY(-5px);
   box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
 }
 
+.btn-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+
+.btn {
+    padding: 14px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: var(--accent-gradient);
+    color: white;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
+}
+
+.info-box {
+    background: rgba(99, 102, 241, 0.1);
+    border-left: 4px solid var(--accent-color);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.info-box h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.info-box p {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.info-box strong {
+    color: #818cf8;
+}
+
+
+/* Auth Tabs & Forms */
 .tabs {
   display: flex;
   width: 100%;
