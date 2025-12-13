@@ -9,88 +9,111 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM8d7x1z5l5e5c5e5e5e5e5e5e5e5e5e5e5e5" crossorigin="anonymous">
 </head>
 <body>
     <main>
-            <div id="loading-screen">
-        <!-- From Uiverse.io by Nawsome --> 
-        <div class="loader">
-            <div class="loader__bar"></div>
-            <div class="loader__bar"></div>
-            <div class="loader__bar"></div>
-            <div class="loader__bar"></div>
-            <div class="loader__bar"></div>
-            <div class="loader__ball"></div>
+        <div id="loading-screen">
+             <!-- From Uiverse.io by Nawsome --> 
+            <div class="loader">
+                <div class="loader__bar"></div>
+                <div class="loader__bar"></div>
+                <div class="loader__bar"></div>
+                <div class="loader__bar"></div>
+                <div class="loader__bar"></div>
+                <div class="loader__ball"></div>
+            </div>
         </div>
-    </div>
 
-    <div class="s-wave-bg">
-        <svg viewBox="0 0 1440 320">
-          <path fill="#2196f3" fill-opacity="1"
-            d="M0,160 C360,240 1080,80 1440,160 L1440,320 L0,320 Z"></path>
-        </svg>
-    </div>
-      
+        <nav class="navbar">
+            <div class="nav-logo">
+                <i class="fas fa-wallet"></i> ExpenseTracker
+            </div>
+            <div class="auth-buttons">
+                <!-- Buttons handled by JS (display block/none) -->
+                <button id="guest-login-btn" class="nav-btn" onclick="window.location.href='../login.html'">Login / Register</button>
+                <button id="logout-btn" class="nav-btn logout" onclick="logout()" style="display: none;">Logout</button>
+            </div>
+        </nav>
 
-    <h1 class="main-heading">Expense Tracker</h1>
-    <div class="auth-buttons" style="text-align: center; margin-bottom: 20px;">
-        <button id="guest-login-btn" class="submit" style="background-color: #28a745; margin: 0; display: none;" onclick="window.location.href='../login.html'">Login / Register to Save</button>
-        <button id="logout-btn" class="submit" style="background-color: #dc3545; margin: 0; display: none;" onclick="logout()">Logout</button>
-    </div>
-    <div class="wrapper">
-        <div class="container">
-            <div class="sub-container">
-                <!-- Budget box -->
-                 <div class="total-amount-container">
-                    <h3>Budget</h3>
-                     <p class="hide-error" id="budget-error"></p>
-                    <input type="number" id="total-amount" placeholder="Enter total amount" />
-                    <button class="submit" id="total-amount-button">Set Budget</button>
-                    <button class="submit" id="add-budget-button">Add to Budget</button>
+        <div class="app-container">
+             <!-- Left Side: Dashboard Stats & Chart -->
+            <div class="dashboard-section">
+                <h2 class="section-title">Dashboard</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card" id="card-budget">
+                        <div class="icon-box"><i class="fas fa-wallet"></i></div>
+                        <div>
+                            <p>Total Budget</p>
+                            <span id="amount">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card" id="card-expense">
+                        <div class="icon-box warning"><i class="fas fa-receipt"></i></div>
+                        <div>
+                            <p>Expenses</p>
+                            <span id="expenditure-value">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card" id="card-balance">
+                         <div class="icon-box success"><i class="fas fa-coins"></i></div>
+                         <div>
+                            <p>Balance</p>
+                            <span id="balance-amount">0</span>
+                         </div>
+                    </div>
+                </div>
 
-                    <button class="reset-button" id="reset-button">Reset</button>
+                <div class="chart-container glass-panel">
+                    <canvas id="expenseChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Right Side: Controls & List -->
+            <div class="controls-section">
+                <!-- Add Budget/Expense Wrapper -->
+                <div class="glass-panel input-panel">
+                    <h3>Manage Finances</h3>
+                    
+                    <div class="tabs">
+                        <button class="tab-btn active" onclick="switchTab('budget')">Budget</button>
+                        <button class="tab-btn" onclick="switchTab('expense')">Expense</button>
+                    </div>
+
+                    <!-- Budget Form -->
+                    <div id="budget-tab" class="tab-content active">
+                        <p class="hide-error" id="budget-error"></p>
+                        <div class="input-group">
+                            <input type="number" id="total-amount" placeholder="Amount" />
+                            <div class="action-buttons">
+                                <button class="submit" id="total-amount-button">Set</button>
+                                <button class="submit secondary" id="add-budget-button">Add</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Expense Form -->
+                    <div id="expense-tab" class="tab-content">
+                        <input type="text" id="product-tittle" placeholder="Expense Name" />
+                        <input type="number" id="user-amount" placeholder="Cost" />
+                        <button class="submit" id="check-amount">Add Expense</button>
+                    </div>
+                     <button class="reset-button" id="reset-button"><i class="fas fa-redo"></i> Reset All</button>
+                </div>
+
+                <!-- Recent Transactions -->
+                 <div class="glass-panel list-panel">
+                    <h3>Recent Transactions</h3>
+                    <div class="list-container" id="list">
+                        <!-- List Items populated by JS -->
+                    </div>
                  </div>
-                <!-- Expense box -->
-                 <div class="user-amount-container">
-                    <h3>Expenses</h3>
-                    <p class="hide-error" id="budget-error"></p>
-                    <input type="text" class="product-tittle" id="product-tittle" placeholder="Enter tittle of the product" />
-                    <!--
-                    <p class="hide-error" id="product-cost-error">Values can't be Empty or Negative.</p>
-                    -->
-                    <input type="number" id="user-amount" placeholder="Enter cost of the product" />
-
-                    <button class="submit" id="check-amount">Check Amount</button>
-                 </div>
-            </div>
-            <!-- Output-->
-
-            <div class="output-container flex-space">
-                <div>
-                    <p>Total Budget</p>
-                    <span id="amount">0</span>
-                </div>
-                <div>
-                    <p>Expenses</p>
-                    <span id="expenditure-value">0</span>
-                </div>
-                <div>
-                    <p>Balance</p>
-                    <span id="balance-amount">0</span>
-                </div>
             </div>
         </div>
-        <!-- List -->
-
-        <div class="list">
-            <h3>Expense List</h3>
-            <div class="list-container" id="list">
-
-            </div>
-        </div>
-    </div>
     </main>
 
         <footer class="footer">
