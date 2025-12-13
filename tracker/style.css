@@ -438,3 +438,40 @@ input:focus {
 
 .hide-error { display: none; }
 .error { color: var(--danger); font-size: 0.9rem; margin-bottom: 0.5rem; }
+/* Coin Loader */
+.loader-coin {
+    width: 64px;
+    height: 64px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: spin 1.5s infinite linear;
+}
+
+.loader-coin .side {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #fcd34d, #d97706);
+    border: 4px solid #f59e0b;
+    color: #92400e;
+    font-size: 32px;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+}
+
+.loader-coin .back {
+    transform: rotateY(180deg);
+}
+
+@keyframes spin {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
+}
+
+/* Remove old loader styles */
+.loader, .loader__bar, .loader__ball { display: none; }
