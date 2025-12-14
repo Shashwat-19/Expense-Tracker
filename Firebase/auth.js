@@ -58,7 +58,7 @@ function checkSessionAndRedirect() {
 
     if (now < parseInt(sessionExpiry)) {
       // User is logged in, redirect to tracker
-      window.location.href = "tracker/index.html";
+      window.location.href = "index.html";
     } else {
       clearSession();
     }
@@ -118,7 +118,7 @@ if (registerForm) {
             showMessage("User created successfully! Redirecting...");
             startSession();
             setTimeout(() => {
-              window.location.href = "tracker/index.html";
+              window.location.href = "index.html";
             }, 1500);
           })
           .catch((error) => {
@@ -154,7 +154,7 @@ if (loginForm) {
         showMessage("Login successful! Redirecting...");
         startSession();
         setTimeout(() => {
-          window.location.href = "tracker/index.html";
+          window.location.href = "index.html";
         }, 1500);
       })
       .catch((error) => {
@@ -174,7 +174,7 @@ if (loginForm) {
 // Logout function (for tracker page)
 window.logout = function() {
   clearSession();
-  window.location.href = "../login.html";
+  window.location.href = "login.html";
 };
 
 // Tab switching function (for registration/login tabs)

@@ -101,14 +101,13 @@ expense-tracker/
 │   └── image.png
 ├── firebase/
 │   └── auth.js
-├── tracker/
-│   ├── index.html
-│   ├── style.css
-│   └── script.js
+├── index.html         (Main App)
 ├── landing.html       (Landing Page)
-├── login.html       (Login/Register Page)
-├── style.css
-├── script.js
+├── login.html         (Login/Register Page)
+├── tracker.css        (App Styles)
+├── tracker.js         (App Logic)
+├── style.css          (Landing/Login Styles)
+├── script.js          (Landing/Login Logic)
 ├── README.md
 ├── .gitignore
 ├── Code of Conduct
