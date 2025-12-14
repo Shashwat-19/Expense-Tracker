@@ -174,7 +174,7 @@ if (loginForm) {
 // Logout function (for tracker page)
 window.logout = function() {
   clearSession();
-  window.location.href = "login.html";
+  window.location.href = "landing.html";
 };
 
 // Tab switching function (for registration/login tabs)
