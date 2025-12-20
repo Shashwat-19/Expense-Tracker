@@ -271,4 +271,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Initial Load
     loadFromLocalStorage();
+
+    // Theme Toggle Logic
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+    const icon = themeToggleBtn.querySelector('i');
+
+    const applyTheme = (theme) => {
+        if (theme === 'light') {
+            body.classList.add('light-mode');
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+            if (expenseChart) {
+                expenseChart.options.plugins.legend.labels.color = '#1e293b';
+                expenseChart.update();
+            }
+        } else {
+            body.classList.remove('light-mode');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+            if (expenseChart) {
+                expenseChart.options.plugins.legend.labels.color = '#94a3b8';
+                expenseChart.update();
+            }
+        }
+    };
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        applyTheme(savedTheme);
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+        const isLight = body.classList.toggle('light-mode');
+        const newTheme = isLight ? 'light' : 'dark';
+        
+        applyTheme(newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+
+    // Handle button text color in light mode for dynamic contrast
+    // (CSS variables handle most, but just to be safe for chart)
+    const originalUpdateChart = updateChart; // Hook into existing function if needed
+    // But chart colors are hardcoded... let's update chart colors dynamically?
+    // For now, let's just stick to the CSS variables.
 });
